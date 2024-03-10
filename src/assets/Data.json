@@ -1,0 +1,17 @@
+// UNA TABLA PARA SKILLS
+{
+  "type": "Coding",
+  "technologies": "JavaScript",
+  "level": "Advanced"
+}
+
+// UNA TABLA PARA EDUCATION
+{
+  "type": "Education",
+  "startYear": "2018",
+  "endYear": "2022",
+  "title" : "Halo - QA Automation",
+  "description" : "I have worked as... Doing..."
+}
+
+
