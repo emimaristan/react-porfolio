@@ -276,6 +276,7 @@ span {
 }
 
 .education .education-row {
+  min-width: 90%;
   display: flex;
   flex-wrap: wrap;
   gap: 5rem;
@@ -368,7 +369,7 @@ span {
 }
 
 .skills .skills-row {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
