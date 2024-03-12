@@ -1,6 +1,19 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import Education from "./Education";
 
 function EducationSection() {
+  const [educationType, setEducationType] = useState([]);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:3000/api/educationtype')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setEducationType(data.data);
+      });
+  }, []);
+
   return (
     <section className="education" id="education">
       <h2 className="heading">
@@ -8,101 +21,14 @@ function EducationSection() {
       </h2>
 
       <div className="education-row">
-        <div className="education-column">
-          <h3 className="title">Education</h3>
-          <div className="education-box">
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Master - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>
-              </div>
-            </div>
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Master - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>{" "}
-              </div>
-            </div>
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Master - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>
-              </div>
+        {educationType.map((type)=> (
+          <div key={type} className="education-column">
+            <h3 className="title">{type}</h3>
+            <div className="education-box">
+              <Education type={type}/>
             </div>
           </div>
-        </div>
-
-        <div className="education-column">
-          <h3 className="title">Experience</h3>
-          <div className="education-box">
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Work - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>
-              </div>
-            </div>
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Work - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>{" "}
-              </div>
-            </div>
-            <div className="education-content">
-              <div className="content">
-                <div className="year">
-                  <i className="bx bxs-calendar"> 2018 - 2020</i>
-                </div>
-                <h3>Work - Technicial</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  quibusdam praesentium vero architecto perspiciatis, aperiam
-                  esse porro velit impedit magni dolores eos, cupiditate ullam
-                  fugiat amet autem distinctio, id ut!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

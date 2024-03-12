@@ -98,6 +98,15 @@ router.get("/education", async (req, res) => {
   }
 });
 
+router.get("/educationtype", async (req, res) => {
+  try {
+    const education = await educationModel.find().select('type').distinct('type').exec();
+    res.status(200).json({ data: education, status: 200 });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/education/:id", async (req, res) => {
   try {
     const education = await educationModel
