@@ -6,8 +6,7 @@ const educationModel = require("../model/educationModel");
 const router = express.Router();
 
 //SKILLS
-router.post("/skills/post", async (req, res) => {
-  console.log(req.body);
+router.post("/skills", async (req, res) => {
   const newSkill = new skillsModel({
     type: req.body.type,
     technology: req.body.technology,
@@ -55,11 +54,74 @@ router.patch("/skills/:id", async (req, res) => {
 router.delete("/skills/:id", async (req, res) => {
   try {
     const skill = await skillsModel.findByIdAndDelete(req.params.id);
-    res
-      .status(200)
-      .json({
-        message: `The skill ${skill.technology} was deleted successfully`,
-      });
+    res.status(200).json({
+      message: `The skill ${skill.technology} was deleted successfully`,
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+//education
+router.post("/education", async (req, res) => {
+  const newEducation = new educationModel({
+    type: req.body.type,
+    title: req.body.title,
+    description: req.body.description,
+    startYear: req.body.startYear,
+    endYear: req.body.endYear,
+  });
+
+  try {
+    const education = await newEducation.save();
+    res.status(201).json({ data: education, status: 201 });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.get("/education", async (req, res) => {
+  try {
+    const education = await educationModel.find().select("-_id -__v");
+    res.status(200).json({ data: education, status: 200 });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/education/:id", async (req, res) => {
+  try {
+    const education = await educationModel
+      .findById(req.params.id)
+      .select("-_id -__v");
+    res.status(200).json({ data: education, status: 200 });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.patch("/education/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const options = { new: true, select: "-_id -__v" };
+
+    const education = await educationModel.findByIdAndUpdate(
+      id,
+      req.body,
+      options
+    );
+    res.status(200).json({ data: education, status: 204 });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.delete("/education/:id", async (req, res) => {
+  try {
+    const education = await educationModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: `The education ${education.title} was deleted successfully`,
+    });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
