@@ -23,7 +23,16 @@ router.post("/skills", async (req, res) => {
 
 router.get("/skills", async (req, res) => {
   try {
-    const skills = await skillsModel.find().select("-_id -__v");
+    const skills = await skillsModel.find().select("-__v");
+    res.status(200).json({ data: skills, status: 200 });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/skilltype", async (req, res) => {
+  try {
+    const skills = await skillsModel.find().select('type').distinct('type').exec();
     res.status(200).json({ data: skills, status: 200 });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -32,7 +41,7 @@ router.get("/skills", async (req, res) => {
 
 router.get("/skills/:id", async (req, res) => {
   try {
-    const skill = await skillsModel.findById(req.params.id).select("-_id -__v");
+    const skill = await skillsModel.findById(req.params.id).select("-__v");
     res.status(200).json({ data: skill, status: 200 });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -42,7 +51,7 @@ router.get("/skills/:id", async (req, res) => {
 router.patch("/skills/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const options = { new: true, select: "-_id -__v" };
+    const options = { new: true, select: "-__v" };
 
     const skill = await skillsModel.findByIdAndUpdate(id, req.body, options);
     res.status(200).json({ data: skill, status: 204 });
@@ -82,7 +91,7 @@ router.post("/education", async (req, res) => {
 
 router.get("/education", async (req, res) => {
   try {
-    const education = await educationModel.find().select("-_id -__v");
+    const education = await educationModel.find().select("-__v");
     res.status(200).json({ data: education, status: 200 });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -93,7 +102,7 @@ router.get("/education/:id", async (req, res) => {
   try {
     const education = await educationModel
       .findById(req.params.id)
-      .select("-_id -__v");
+      .select("-__v");
     res.status(200).json({ data: education, status: 200 });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -103,7 +112,7 @@ router.get("/education/:id", async (req, res) => {
 router.patch("/education/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const options = { new: true, select: "-_id -__v" };
+    const options = { new: true, select: "-__v" };
 
     const education = await educationModel.findByIdAndUpdate(
       id,

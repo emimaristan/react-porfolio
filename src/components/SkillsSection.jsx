@@ -1,61 +1,35 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import Skill from './Skill';
 
 function SkillsSection() {
+  const [skillType, setSkillType] = useState([]);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:3000/api/skilltype')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setSkillType(data.data);
+      });
+  }, []);
+
   return (
     <section className="skills" id="skills">
       <h2 className="heading">
         My <span>Skills</span>
       </h2>
       <div className="skills-row">
-        <div className="skills-column">
-          <h3 className="title">Coding Skills</h3>
-          <div className="skills-box">
-            <div className="skills-content">
-              <div className="progress">
-                <h3>
-                  JavaScript <span>Advanced</span>
-                </h3>
+        {skillType.map((type) => (
+          <div key={type} className="skills-column">
+            <h3 className="title">{type} Skills</h3>
+              <div className="skills-box">
+                <div className="skills-content">
+                  <Skill type={type}/>
+                </div>
               </div>
-
-              <div className="progress">
-                <h3>
-                  HTML <span>Advanced</span>
-                </h3>
-              </div>
-
-              <div className="progress">
-                <h3>
-                  CSS <span>Advanced</span>
-                </h3>
-              </div>
-            </div>
           </div>
-        </div>
-
-        <div className="skills-column">
-          <h3 className="title">Coding Skills</h3>
-          <div className="skills-box">
-            <div className="skills-content">
-              <div className="progress">
-                <h3>
-                  JavaScript <span>Advanced</span>
-                </h3>
-              </div>
-
-              <div className="progress">
-                <h3>
-                  HTML <span>Advanced</span>
-                </h3>
-              </div>
-
-              <div className="progress">
-                <h3>
-                  CSS <span>Advanced</span>
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
