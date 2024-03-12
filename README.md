@@ -12,6 +12,8 @@ npm i express mongoose dotenv nodemon
 3. Nodemon to restart our server every time we save our file.
 4. Dotenv to manage a .env file.
 
-  To start the project:
-  npm i
-  npm run dev
+To start the project:
+npm i
+npm run dev
+
+BACKEND URL: http://127.0.0.1:3000/api/education
