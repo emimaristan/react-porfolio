@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Skill from "./Skill";
+import "./SkillsSection.css";
 
 function SkillsSection() {
   const [skillType, setSkillType] = useState([]);

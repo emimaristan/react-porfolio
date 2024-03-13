@@ -1,12 +1,13 @@
 import { useEffect } from "react";
+import "./index.css";
 
-import HomeSection from "./components/HomeSection";
-import Navbar from "./components/Navbar";
-import AboutSection from "./components/AboutSection";
-import EducationSection from "./components/EducationSection";
-import SkillsSection from "./components/SkillsSection";
-import ContactSection from "./components/ContactSection";
-import Footer from "./components/Footer";
+import HomeSection from "./components/HomeSection/HomeSection";
+import Navbar from "./components/Navbar/Navbar";
+import AboutSection from "./components/AboutSection/AboutSection";
+import EducationSection from "./components/EducationSection/EducationSection";
+import SkillsSection from "./components/SkillsSection/SkillsSection";
+import ContactSection from "./components/ContactSection/ContactSection";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   useEffect(() => {

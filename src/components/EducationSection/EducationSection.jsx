@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Education from "./Education";
+import "./EducationSection.css";
 
 function EducationSection() {
   const [educationType, setEducationType] = useState([]);
