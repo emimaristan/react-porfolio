@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Education from "./Education";
 
 function EducationSection() {
   const [educationType, setEducationType] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/api/educationtype')
+    fetch("http://127.0.0.1:3000/api/education/types")
       .then((res) => {
         return res.json();
       })
@@ -21,11 +21,11 @@ function EducationSection() {
       </h2>
 
       <div className="education-row">
-        {educationType.map((type)=> (
+        {educationType.map((type) => (
           <div key={type} className="education-column">
             <h3 className="title">{type}</h3>
             <div className="education-box">
-              <Education type={type}/>
+              <Education type={type} />
             </div>
           </div>
         ))}
