@@ -1,4 +1,6 @@
+import BtnBox from "./BtnBox";
 import "./HomeSection.css";
+import SocialIcons from "./SocialIcons";
 
 function HomeSection() {
   return (
@@ -12,31 +14,10 @@ function HomeSection() {
           fuga nam quod sequi quo perspiciatis repellat illo, iure, voluptates
           explicabo esse!
         </p>
-        <div className="btn-box">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/emiliano-maristan-aguilar-4206251ba"
-          >
-            LinkedIn
-          </a>
-          <a href="#contact">Contact</a>
-        </div>
+        <BtnBox />
       </div>
 
-      <div className="home-sci">
-        <a
-          target="_blank"
-          href="https://www.linkedin.com/in/emiliano-maristan-aguilar-4206251ba"
-        >
-          <i className="bx bxl-linkedin"></i>
-        </a>
-        <a target="_blank" href="https://www.instagram.com/emimaristan">
-          <i className="bx bxl-instagram"></i>
-        </a>
-        <a target="_blank" href="https://github.com/emimaristan">
-          <i className="bx bxl-github"></i>
-        </a>
-      </div>
+      <SocialIcons />
     </section>
   );
 }

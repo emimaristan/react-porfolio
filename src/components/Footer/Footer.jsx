@@ -12,8 +12,6 @@ function Footer() {
           <i className="bx bx-up-arrow-alt"></i>
         </a>
       </div>
-
-      {/* <span className="animate scroll"></span> */}
     </footer>
   );
 }
