@@ -17,3 +17,5 @@ npm i
 npm run dev
 
 BACKEND URL: http://127.0.0.1:3000/api/education
+
+EMAIL SENDING https://www.emailjs.com/docs/sdk/installation/

@@ -77,3 +77,66 @@
   justify-content: center;
   width: 100%;
 }
+
+.btn-box button {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  width: 15rem;
+  height: 100%;
+  cursor: pointer;
+  background: var(--main-color);
+  border: 0.2rem solid var(--main-color);
+  border-radius: 0.8rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--bg-color);
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.btn-box button:hover {
+  color: var(--main-color);
+}
+
+.btn-box button:nth-child(2) {
+  background: transparent;
+  color: var(--main-color);
+}
+
+.btn-box button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--bg-color);
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.btn-box button:hover::before {
+  width: 100%;
+}
+
+.btn-box button:nth-child(2):hover {
+  color: var(--bg-color);
+}
+
+.btn-box button:nth-child(2)::before {
+  background: var(--main-color);
+}
+
+.btn-box button:disabled {
+  cursor: progress;
+  background: var(--main-color);
+  border: 0.2rem solid var(--main-color);
+  border-radius: 0.8rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+}
