@@ -1,5 +1,5 @@
 Fonts from: https://fonts.google.com/selection/embed
-Icons from: https://boxicons.com/
+Icons from: https://boxicons.com/ https://boxicons.com/usage#import-css
 
 npm create vite@latest (to create the react project)
 npm i express mongoose dotenv nodemon

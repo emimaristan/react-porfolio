@@ -64,11 +64,4 @@
   animation-delay: 1.5s;
 }
 
-.home-content .btn-box::before {
-  width: 100%;
-}
 
-.home-content .btn-box::before {
-  animation: showRight 0.7s ease forwards;
-  animation-delay: 2s;
-}
